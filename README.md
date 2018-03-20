@@ -1,6 +1,7 @@
 # doitnow
 
-> To do app
+> To do app 예제를 Local Storge 가 아닌 Firebase로 구성
+> 원본 샘플은 여기 
 
 ## Build Setup
 
