@@ -1,24 +1,24 @@
 <template>
-    <!-- template for the modal component -->
-    <transition name="modal">
-        <!-- <div class="modal-mask" @keyup.esc="$emit('close')"> -->
-        <div class="modal-mask" @click="close">
-            <div class="modal-wrapper">
-                <div class="modal-container" @click.stop>
-                    <div class="modal-header">
-                        <slot name="header">
-                        </slot>
-                    </div>
-                    <div class="modal-footer">
-                        <slot name="footer">
-                           <!--  <button class="modal-default-button" @click="$emit('close')">
-                            </button> -->
-                        </slot>
-                    </div>
-                </div>
-            </div>
+  <!-- template for the modal component -->
+  <transition name="modal">
+    <!-- <div class="modal-mask" @keyup.esc="$emit('close')"> -->
+    <div class="modal-mask" @click="close">
+      <div class="modal-wrapper">
+        <div class="modal-container" @click.stop>
+          <div class="modal-header">
+            <slot name="header">
+            </slot>
+          </div>
+          <div class="modal-footer">
+            <slot name="footer">
+              <!--  <button class="modal-default-button" @click="$emit('close')">
+              </button> -->
+            </slot>
+          </div>
         </div>
-    </transition>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>

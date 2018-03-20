@@ -1,15 +1,15 @@
 <template>
-    <section>
-        <transition-group name="list" tag="ul">
-            <li v-for="todoItem in propsdata" :key="todoItem['.key']" class="shadow">
-                <i class="checkBtn fa fa-check" aria-hidden="true"></i>
-                {{ todoItem['.value'] }}
-                <span class="removeBtn" type='button' @click='removeTodo(todoItem)'>
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                </span>
-            </li>
-        </transition-group>
-    </section>
+  <section>
+    <transition-group name="list" tag="ul">
+      <li v-for="todoItem in propsdata" :key="todoItem['.key']" class="shadow">
+        <i class="checkBtn fa fa-check" aria-hidden="true"></i>
+        {{ todoItem['.value'] }}
+        <span class="removeBtn" type='button' @click='removeTodo(todoItem)'>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </span>
+      </li>
+    </transition-group>
+  </section>
 </template>
 
 <script>

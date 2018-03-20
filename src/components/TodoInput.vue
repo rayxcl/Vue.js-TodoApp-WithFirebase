@@ -2,7 +2,7 @@
   <div class="inputBox shadow" >
     <input type="text" v-model="newTodoItem" placeholder="Type what you want to do" v-on:keyup.enter="addTodo" ref="todoInput">
     <span class="addContainer" v-on:click="addTodo">
-        <i class="addBtn fa fa-plus" aria-hidden="true"></i>
+      <i class="addBtn fa fa-plus" aria-hidden="true"></i>
     </span>
     <modal v-if="showModal" @close="showModal = false" v-bind:modalprops="showModal">
       <h3 slot="header">Warning</h3>
