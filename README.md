@@ -2,10 +2,9 @@
 
 > To do app
 
-예제에 Firebase 적용 <br>
-[(원본: doit-vuejs)](https://github.com/joshua1988/doit-vuejs) <br>
+예제에 Firebase 적용 [(원본: doit-vuejs)](https://github.com/joshua1988/doit-vuejs) <br>
 
-[##Demo](https://doitnow-53d8d.firebaseapp.com)
+##[Demo](https://doitnow-53d8d.firebaseapp.com)
 
 ## Build Setup
 
