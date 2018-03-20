@@ -1,0 +1,103 @@
+<template>
+  <div id="app">
+    <TodoHeader></TodoHeader>
+    <TodoInput v-on:addTodo="addTodoApp"></TodoInput>
+    <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodoApp"></TodoList>
+    <TodoFooter v-on:removeAll="removeAllApp"></TodoFooter>
+  </div>
+</template>
+
+
+<script>
+
+import Vue from 'vue'
+import VueFire from 'vuefire'
+// import VueBlu from 'vue-blu'
+// import 'vue-blu/dist/css/vue-blu.min.css'
+Vue.use(VueFire)
+// Vue.use(VueBlu)
+import Firebase from 'firebase'
+
+import TodoHeader from './components/TodoHeader'
+import TodoInput from './components/TodoInput'
+import TodoList from './components/TodoList'
+import TodoFooter from './components/TodoFooter'
+
+let config = {
+    apiKey: "AIzaSyAhAIs6LzdDsfxD03cjbEfdQSZsjfO81Xk",
+    authDomain: "doitnow-53d8d.firebaseapp.com",
+    databaseURL: "https://doitnow-53d8d.firebaseio.com",
+    projectId: "doitnow-53d8d",
+    storageBucket: "doitnow-53d8d.appspot.com",
+    messagingSenderId: "541258045028"
+};
+
+let app = Firebase.initializeApp(config) // Firebase 초기화
+let db = app.database() // 실시간 데이터베이스 사용 준비 완료
+let ItemsRef = db.ref('todoItems') // 데이터베이스 참조 검색
+
+
+export default {
+  name: 'app',
+  firebase: function() {
+      return {
+          todoItems: ItemsRef
+      }
+  },
+  /* data () {
+    return {
+      todoItems: []
+    }
+  }, */
+  created () {
+      /* if (localStorage.length > 0) {
+          for (let i = 0; i < localStorage.length; i++) {
+              console.log(localStorage.key(i));
+              this.todoItems.push(localStorage.key(i));
+          }
+      } */
+  },
+  methods: {
+    addTodoApp (todoItemApp) {
+      // localStorage.setItem(todoItemApp, todoItemApp);
+      // this.todoItems.push(todoItemApp);
+      ItemsRef.push(todoItemApp);
+    },
+    removeAllApp () {
+      // localStorage.clear();
+      // this.todoItems = [];
+
+      ItemsRef.remove();
+    },
+    removeTodoApp (todoItem) {
+      // localStorage.removeItem(todoItem);
+      // this.todoItems.splice(index, 1);
+
+      ItemsRef.child(todoItem['.key']).remove();
+    }
+  },
+  components: {
+    'TodoHeader': TodoHeader,
+    'TodoInput': TodoInput,
+    'TodoList': TodoList,
+    'TodoFooter': TodoFooter
+  }
+}
+</script>
+
+<style>
+  body {
+    text-align: center;
+    background-color: #f6f6f8;
+  }
+  input {
+    border-style: groove;
+    width: 200px;
+  }
+  button {
+    border-style: groove;
+  }
+  .shadow {
+    box-shadow: 5px 10px 10px rgba(0,0,0,0.03)
+  }
+</style>
