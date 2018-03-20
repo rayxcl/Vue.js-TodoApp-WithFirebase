@@ -1,7 +1,9 @@
 # doitnow
 
-> To do app 예제를 Local Storge 가 아닌 Firebase로 구성
-> 원본 샘플은 여기 
+> To do app
+
+예제를 Local Storge 가 아닌 Firebase로 구성
+예제 원본은 여기 [doit-vuejs](https://github.com/joshua1988/doit-vuejs)
 
 ## Build Setup
 
