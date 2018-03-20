@@ -7,15 +7,10 @@
   </div>
 </template>
 
-
 <script>
-
 import Vue from 'vue'
 import VueFire from 'vuefire'
-// import VueBlu from 'vue-blu'
-// import 'vue-blu/dist/css/vue-blu.min.css'
 Vue.use(VueFire)
-// Vue.use(VueBlu)
 import Firebase from 'firebase'
 
 import TodoHeader from './components/TodoHeader'
@@ -44,35 +39,14 @@ export default {
           todoItems: ItemsRef
       }
   },
-  /* data () {
-    return {
-      todoItems: []
-    }
-  }, */
-  created () {
-      /* if (localStorage.length > 0) {
-          for (let i = 0; i < localStorage.length; i++) {
-              console.log(localStorage.key(i));
-              this.todoItems.push(localStorage.key(i));
-          }
-      } */
-  },
   methods: {
     addTodoApp (todoItemApp) {
-      // localStorage.setItem(todoItemApp, todoItemApp);
-      // this.todoItems.push(todoItemApp);
       ItemsRef.push(todoItemApp);
     },
     removeAllApp () {
-      // localStorage.clear();
-      // this.todoItems = [];
-
       ItemsRef.remove();
     },
     removeTodoApp (todoItem) {
-      // localStorage.removeItem(todoItem);
-      // this.todoItems.splice(index, 1);
-
       ItemsRef.child(todoItem['.key']).remove();
     }
   },

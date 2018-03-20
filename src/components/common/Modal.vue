@@ -9,7 +9,6 @@
                         <slot name="header">
                         </slot>
                     </div>
-
                     <div class="modal-footer">
                         <slot name="footer">
                            <!--  <button class="modal-default-button" @click="$emit('close')">
@@ -22,28 +21,23 @@
     </transition>
 </template>
 
-
-
 <script>
 export default {
-    props: ['modalprops'],
-    methods: {
-        close() {
-            this.$emit("close");
-        }
-    },
-    mounted() {
-        document.addEventListener("keydown", e => {
-            // console.log(e.keyCode);
-            if (this.modalprops && (e.keyCode === 27)) {
-                this.close();
-            }
-        });
+  props: ["modalprops"],
+  methods: {
+    close() {
+      this.$emit("close");
     }
+  },
+  mounted() {
+    document.addEventListener("keydown", e => {
+      if (this.modalprops && e.keyCode === 27) {
+        this.close();
+      }
+    });
+  }
 };
 </script>
-
-
 
 <style>
 .closeModalBtn {

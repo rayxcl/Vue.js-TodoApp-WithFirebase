@@ -1,80 +1,74 @@
 <template>
-    <div class="inputBox shadow" >
-        <input type="text" v-model="newTodoItem" placeholder="Type what you want to do" v-on:keyup.enter="addTodo" ref="todoInput">
-        <span class="addContainer" v-on:click="addTodo">
-            <i class="addBtn fa fa-plus" aria-hidden="true"></i>
-        </span>
-
-        <modal v-if="showModal" @close="showModal = false" v-bind:modalprops="showModal">
-            <h3 slot="header">Warning</h3>
-            <span slot="footer" @click="showModal = false">
-                Write something
-                <i class="closeModalBtn fa fa-times" aria-hidden="true"></i>
-            </span>
-        </modal>
-    </div>
-
+  <div class="inputBox shadow" >
+    <input type="text" v-model="newTodoItem" placeholder="Type what you want to do" v-on:keyup.enter="addTodo" ref="todoInput">
+    <span class="addContainer" v-on:click="addTodo">
+        <i class="addBtn fa fa-plus" aria-hidden="true"></i>
+    </span>
+    <modal v-if="showModal" @close="showModal = false" v-bind:modalprops="showModal">
+      <h3 slot="header">Warning</h3>
+      <span slot="footer" @click="showModal = false">
+        Write something
+        <i class="closeModalBtn fa fa-times" aria-hidden="true"></i>
+      </span>
+    </modal>
+  </div>
 </template>
 
 <script>
-import Modal from './common/Modal'
+import Modal from "./common/Modal";
 
 export default {
-    data () {
-        return {
-            newTodoItem: '',
-            showModal: false
-        }
+  data() {
+    return {
+      newTodoItem: "",
+      showModal: false
+    };
+  },
+  methods: {
+    addTodo() {
+      if (this.newTodoItem !== "") {
+        var value = this.newTodoItem && this.newTodoItem.trim();
+        this.$emit("addTodo", value);
+        this.clearInput();
+        this.$refs.todoInput.focus();
+      } else {
+        this.showModal = !this.showModal;
+      }
     },
-    methods: {
-        addTodo () {
-            if (this.newTodoItem !== '') {
-                var value = this.newTodoItem && this.newTodoItem.trim();
-                this.$emit('addTodo', value);
-                this.clearInput();
-                this.$refs.todoInput.focus();
-            }
-            else {
-                this.showModal = !this.showModal;
-            }
-        },
-        clearInput () {
-            this.newTodoItem = '';
-        }
-    },
-    components: {
-        Modal: Modal
+    clearInput() {
+      this.newTodoItem = "";
     }
-}
+  },
+  components: {
+    Modal: Modal
+  }
+};
 </script>
 
-
 <style scoped>
-    input:focus {
-        outline: none;
-    }
-    .inputBox {
-        background: white;
-        height: 50px;
-        line-height: 50px;
-        border-radius: 5px;
-    }
-    .inputBox input {
-        border-style: none;
-        font-size: 0.9rem;
-        vertical-align: middle;
-    }
-    .addContainer {
-        float: right;
-        background: linear-gradient(to right, #6478FB, #8763FB);
-        display: inline-block;
-        width: 3rem;
-        border-radius: 0 5px 5px 0;
-    }
-
-    .addBtn {
-        color: white;
-        vertical-align: middle;
-    }
-
+input:focus {
+  outline: none;
+}
+.inputBox {
+  background: white;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+}
+.inputBox input {
+  border-style: none;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+.addContainer {
+  float: right;
+  background: linear-gradient(to right, #6478fb, #8763fb);
+  display: inline-block;
+  width: 3rem;
+  border-radius: 0 5px 5px 0;
+}
+.addBtn {
+  color: white;
+  vertical-align: middle;
+}
 </style>
