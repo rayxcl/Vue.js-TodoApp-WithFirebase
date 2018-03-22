@@ -1,8 +1,7 @@
 <template>
   <!-- template for the modal component -->
   <transition name="modal">
-    <!-- <div class="modal-mask" @keyup.esc="$emit('close')"> -->
-    <div class="modal-mask" @click="close">
+    <div class="modal-mask" @click="setContorlModal({ type: 'nToggle', value: false })">
       <div class="modal-wrapper">
         <div class="modal-container" @click.stop>
           <div class="modal-header">
@@ -22,17 +21,19 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
-  props: ["modalprops"],
   methods: {
-    close() {
-      this.$emit("close");
-    }
+    ...mapMutations(["setContorlModal"])
+  },
+  computed: {
+    ...mapGetters(["getShowModal"])
   },
   mounted() {
     document.addEventListener("keydown", e => {
-      if (this.modalprops && e.keyCode === 27) {
-        this.close();
+      if (this.getShowModal && e.keyCode === 27) {
+        this.setContorlModal({ type: 'nToggle', value: false });
       }
     });
   }

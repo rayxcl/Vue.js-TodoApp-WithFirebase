@@ -1,22 +1,23 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput @addTodo="addTodoApp" :propsflag="flagFocus" @resetflag="resetflagApp"></TodoInput>
+    <TodoInput @addTodo="addTodoApp"></TodoInput>
     <TodoList :propsdata="todoItems" @removeTodo="removeTodoApp"></TodoList>
-    <TodoFooter @removeAll="removeAllApp" @setFocus="setFocusApp"></TodoFooter>
+    <TodoFooter @removeAll="removeAllApp"></TodoFooter>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import VueFire from "vuefire";
-Vue.use(VueFire);
 import Firebase from "firebase";
 
 import TodoHeader from "./components/TodoHeader";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import TodoFooter from "./components/TodoFooter";
+
+Vue.use(VueFire);
 
 let config = {
   apiKey: "AIzaSyAhAIs6LzdDsfxD03cjbEfdQSZsjfO81Xk",
@@ -33,11 +34,6 @@ let ItemsRef = db.ref("todoItems"); // 데이터베이스 참조 검색
 
 export default {
   name: "app",
-  data() {
-    return {
-      flagFocus: false
-    };
-  },
   firebase: function() {
     return {
       todoItems: ItemsRef
@@ -52,13 +48,6 @@ export default {
     },
     removeAllApp() {
       ItemsRef.remove();
-      this.setFocusApp();
-    },
-    setFocusApp() {
-      this.flagFocus = true;
-    },
-    resetflagApp() {
-      this.flagFocus = false;
     }
   },
   components: {

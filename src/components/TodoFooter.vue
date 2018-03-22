@@ -5,11 +5,18 @@
 </template>
 
 <script>
+
+import { mapMutations } from 'vuex'
+
 export default {
   methods: {
     clearTodo() {
       this.$emit("removeAll");
-    }
+
+      // this.$store.commit('setInputFocus', true)
+      this.setInputFocus(true);
+    },
+    ...mapMutations(["setInputFocus"])
   }
 };
 </script>
