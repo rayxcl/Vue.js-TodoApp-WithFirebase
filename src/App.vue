@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodo="addTodoApp"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodoApp"></TodoList>
-    <TodoFooter v-on:removeAll="removeAllApp"></TodoFooter>
+    <TodoInput @addTodo="addTodoApp" :propsflag="flagFocus" @resetflag="resetflagApp"></TodoInput>
+    <TodoList :propsdata="todoItems" @removeTodo="removeTodoApp"></TodoList>
+    <TodoFooter @removeAll="removeAllApp" @setFocus="setFocusApp"></TodoFooter>
   </div>
 </template>
 
@@ -34,20 +34,32 @@ let ItemsRef = db.ref('todoItems') // 데이터베이스 참조 검색
 
 export default {
   name: 'app',
+  data () {
+    return {
+      flagFocus: false
+    }
+  },
   firebase: function() {
-      return {
-          todoItems: ItemsRef
-      }
+    return {
+      todoItems: ItemsRef
+    }
   },
   methods: {
     addTodoApp (todoItemApp) {
       ItemsRef.push(todoItemApp);
     },
-    removeAllApp () {
-      ItemsRef.remove();
-    },
     removeTodoApp (todoItem) {
       ItemsRef.child(todoItem['.key']).remove();
+    },
+    removeAllApp () {
+      ItemsRef.remove();
+      this.setFocusApp();
+    },
+    setFocusApp () {
+      this.flagFocus = true;
+    },
+    resetflagApp () {
+      this.flagFocus = false;
     }
   },
   components: {

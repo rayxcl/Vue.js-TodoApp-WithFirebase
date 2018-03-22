@@ -1,6 +1,7 @@
 <template>
   <div class="inputBox shadow" >
-    <input type="text" v-model="newTodoItem" placeholder="Type what you want to do" v-on:keyup.enter="addTodo" ref="todoInput">
+    <input type="text" v-model="newTodoItem" placeholder="Type what you want to do" @keyup.enter="addTodo" ref="todoInput" @blur="resetFocus">
+
     <span class="addContainer" v-on:click="addTodo">
       <i class="addBtn fa fa-plus" aria-hidden="true"></i>
     </span>
@@ -18,6 +19,7 @@
 import Modal from "./common/Modal";
 
 export default {
+  props: ['propsflag'],
   data() {
     return {
       newTodoItem: "",
@@ -30,13 +32,27 @@ export default {
         var value = this.newTodoItem && this.newTodoItem.trim();
         this.$emit("addTodo", value);
         this.clearInput();
-        this.$refs.todoInput.focus();
+        this.setFocus();
       } else {
         this.showModal = !this.showModal;
       }
     },
     clearInput() {
       this.newTodoItem = "";
+    },
+    setFocus () {
+      this.$refs.todoInput.focus();
+    },
+    resetFocus () {
+      console.log('focus out');
+      this.$emit("resetflag");
+    }
+  },
+  watch: {
+    propsflag () {
+      if (this.propsflag === true) {
+        this.setFocus();
+      }
     }
   },
   components: {
