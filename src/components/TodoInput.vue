@@ -45,7 +45,6 @@ export default {
       this.$refs.todoInput.focus();
     },
     resetFocus() {
-      console.log("focus out");
       this.$emit("resetflag");
     }
   },
