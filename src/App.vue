@@ -31,7 +31,6 @@ let app = Firebase.initializeApp(config) // Firebase 초기화
 let db = app.database() // 실시간 데이터베이스 사용 준비 완료
 let ItemsRef = db.ref('todoItems') // 데이터베이스 참조 검색
 
-
 export default {
   name: 'app',
   data () {
