@@ -7,9 +7,9 @@
 [Demo](https://doitnow-53d8d.firebaseapp.com)
 
 ## Change Log
-1. Improve User Experience
-  - Close modal by mouse click, <ESC>
-  - Focus on input after add or clear all items
+#### Improve User Experience - 2018/03
+  1. Close modal by mouse click, <ESC>
+  2. Focus on input after add or clear all items
 
 
 ## Build Setup
