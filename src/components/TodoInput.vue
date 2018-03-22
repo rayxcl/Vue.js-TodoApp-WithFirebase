@@ -20,7 +20,7 @@
 import Modal from "./common/Modal";
 
 export default {
-  props: ['propsflag'],
+  props: ["propsflag"],
   data() {
     return {
       newTodoItem: "",
@@ -41,16 +41,16 @@ export default {
     clearInput() {
       this.newTodoItem = "";
     },
-    setFocus () {
+    setFocus() {
       this.$refs.todoInput.focus();
     },
-    resetFocus () {
-      console.log('focus out');
+    resetFocus() {
+      console.log("focus out");
       this.$emit("resetflag");
     }
   },
   watch: {
-    propsflag () {
+    propsflag() {
       if (this.propsflag === true) {
         this.setFocus();
       }
