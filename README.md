@@ -11,6 +11,7 @@
   1. Close modal by mouse click, 'ESC'
   2. Focus on input after add or clear all items
 
+#### Make a branch for applying Vuex
 
 ## Build Setup
 
