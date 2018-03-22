@@ -11,7 +11,13 @@
   1. Close modal by mouse click, 'ESC'
   2. Focus on input after add or clear all items
 
-#### Make a branch for applying Vuex
+#### Apply Vuex (Step1) - 2018/03
+  1. Move some flag and input text data to state in store for management by Vuex
+  2. Use Vuex Helper
+
+#### Next to do
+  1. Use Vuex with Firebase together
+
 
 ## Build Setup
 
@@ -32,8 +38,11 @@
 > firebase init
 > firebase deploy
 
-# install vuex
+# install Vuex
 > npm install vuex --save
+
+# for using Vuex Helpers (Mapping)
+> npm install --save-dev babel-preset-stage-2
 
 ```
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
